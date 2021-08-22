@@ -4,6 +4,8 @@
 
 A case/tent for for [Architeuthis Dux by Tapi][1].
 
+![Wireless Architeuthis Dux with nice!nano controllers][2]
+
 ## Usage
 
 * Install OpenSCAD
@@ -14,3 +16,4 @@ A case/tent for for [Architeuthis Dux by Tapi][1].
 * Print the stl
 
 [1]: https://github.com/tapioki/cephalopoda/tree/main/Architeuthis%20dux
+[2]: ./image.png
