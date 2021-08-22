@@ -1,4 +1,4 @@
-tent_angle=10;
+tent_angle=20;
 tent_rotate=[0, tent_angle, 0];
 offset_x=-35;
 bottom_padding=0;
@@ -6,6 +6,7 @@ pcb_depth=6;
 slop=0.9;
 caseRounding=2;
 casePadding=5;
+pcbLip=-8;
 
 main();
 
@@ -49,13 +50,19 @@ module main() {
                 caseOutline();
                 
             minkowski() {               
-                // top wedge
+                // wedge
                 difference() {        
                     linear_extrude(100)
                         projection(cut = false)
                         rotate(a=tent_rotate)
-                        linear_extrude(height=0.1, center=false, convexity=10)
-                        caseOutlineMinOffset();
+                        difference() {
+                            linear_extrude(height=0.1, center=false, convexity=10)
+                                caseOutlineMinOffset();
+                            // battery/mcu cutout 
+                            translate([-140+offset_x, 10, -10])
+                                cube([40, 80, 90]);
+                        }
+                        
                         
                     // cut out wedge on angle
                     rotate(a=tent_rotate)
@@ -74,21 +81,17 @@ module main() {
         // inner hole
         difference() {
             translate([0, 0, -10])
-                linear_extrude(height=50, center=false, convexity=10)
+                linear_extrude(height=100, center=false, convexity=10)
                 projection(cut = false)
                 linear_extrude(height=0.1, center=false, convexity=10)
                 rotate(a=tent_rotate)
-                offset(-6)
+                offset(pcbLip)
                 pcb2D();
             // extra strength for outter edge
             rotate([0, 0, -20])
                 translate([-21+offset_x, -22, -pcb_depth-bottom_padding]) 
                 cube([20, 48, 30]);
         } 
-
-        // battery/mcu cutout 
-        translate([-138+offset_x, 10, -10])
-            cube([40, 80, 90]);
 
         // bottom text
         translate([-50, -10, -bottom_padding-1.6])
