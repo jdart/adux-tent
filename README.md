@@ -13,4 +13,4 @@ A case/tent for for [Architeuthis Dux by Tapi][1].
 * Export STL (F7)
 * Print the stl
 
-[2]: https://github.com/tapioki/cephalopoda/tree/main/Architeuthis%20dux
+[1]: https://github.com/tapioki/cephalopoda/tree/main/Architeuthis%20dux
