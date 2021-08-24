@@ -1,4 +1,4 @@
-tent_angle=20;
+tent_angle=15;
 tent_rotate=[0, tent_angle, 0];
 offset_x=-35;
 bottom_padding=0;
@@ -59,8 +59,8 @@ module main() {
                             linear_extrude(height=0.1, center=false, convexity=10)
                                 caseOutlineMinOffset();
                             // battery/mcu cutout 
-                            translate([-140+offset_x, 10, -10])
-                                cube([40, 80, 90]);
+                            translate([-132+offset_x, 31, -10])
+                                cube([50, 70, 90]);
                         }
                         
                         
